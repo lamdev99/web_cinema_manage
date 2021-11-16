@@ -65,7 +65,7 @@
                 </div>
                 Trang chủ
               </a>
-              <a class="nav-link" th:href="@{/cinema/dashboards}">
+              <a class="nav-link" th:href="@{/cinema/statistic}">
                 <div class="sb-nav-link-icon">
                   <i class="fas fa-chart-area"></i>
                 </div>
@@ -84,7 +84,7 @@
 				<h1 class="my-4">Thống kê doanh thu theo phim</h1>
 				<div class="col-12 float-end">
 				 <form action="#" th:action="@{/cinema/dashboards}" method="get">
-					<div class="input-group mb-3">
+					<div class="input-group offset-3">
 						<label for="fname" class="mx-2">Thời gian bắt đầu</label><br>
 						<input type="date" name="start" placeholder="dd-mm-yyyy" th:value="${start}" min="1997-01-01"
 							max="2030-12-31" class="mx-2">
@@ -101,24 +101,19 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Tên phim</th>
-							<th scope="col">Tổng số vé bán</th>
-							<th scope="col">Tổng doanh thu</th>
+							<th scope="col" class ="text-center">#</th>
+							<th scope="col" class ="text-center">Tên phim</th>
+							<th scope="col" class ="text-center">Tổng số vé bán</th>
+							<th scope="col" class ="text-center">Tổng doanh thu(VNĐ)</th>
 							<th scope="col">Chi tiết</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="phim : ${phims}">
-							<td th:text="${phim.id}"></td>
-							<td th:text="${phim.tenPhim}"></td>
-							<td th:text="${phim.tongVeBanRa}"></td>
-							<td th:text="${phim.tongDoanhThu}"></td>
-							<!--<td class="col-2">
-								<button type="button" class="btn btn-primary btn-sm" th:action="@{/cinema/dashboards/{id}(id=${phim.id})}">	
-									Xem
-								</button>
-							</td>-->
+							<td th:text="${phim.id}" class = "text-center"></td>
+							<td th:text="${phim.tenPhim}" class="text-center"></td>
+							<td th:text="${phim.tongVeBanRa}" class ="text-center"></td>
+							<td th:text="${phim.tongDoanhThuVND}" class="text-start"></td>
 							<td><a th:href="@{/cinema/dashboards/{id}(id=${phim.id})}" class="btn btn-primary"><i class="fas fa-info"></i></a></td>
 						</tr>
 					</tbody>

@@ -22,7 +22,7 @@ public class PhimDAO implements DAO<Phim>{
 	
 	@Override
 	public Optional<Phim> get(int id) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
@@ -31,6 +31,11 @@ public class PhimDAO implements DAO<Phim>{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public Phim getPhimById(int id) {
+		return phimRepository.findById(id).orElse(null);
+	}
+	
 	public List<PhimDTO> getTKDTTheoPhim(Date start, Date end){
 		List<PhimDTOStatistics> listDTDtoStatistics = phimRepository.getTKDTTheoPhim(new java.sql.Date(start.getTime()), new java.sql.Date(end.getTime()));
 		List<PhimDTO> list = new ArrayList<>();
@@ -40,13 +45,12 @@ public class PhimDAO implements DAO<Phim>{
 		return list;
 	}
 	public List<PhimDTO> getAllPhim(){
+		List<PhimDTOStatistics> listDTDtoStatistics = phimRepository.getAllPhim();
 		List<PhimDTO> list = new ArrayList<>();
-		list.add(new PhimDTO(1, "MotPhim", 0, 0));
-		list.add(new PhimDTO(1, "MotPhim", 0, 0));
-		list.add(new PhimDTO(1, "MotPhim", 0, 0));
-		list.add(new PhimDTO(1, "MotPhim", 0, 0));
+		for(PhimDTOStatistics p : listDTDtoStatistics) {
+			list.add(new PhimDTO(p.getId(), p.getTenPhim(), p.getTongVeBanRa(), p.getTongDoanhThu()));
+		}
 		return list;
-//		return phimRepository.getAllPhim();
 	}
 
 }

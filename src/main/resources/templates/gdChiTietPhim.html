@@ -97,7 +97,7 @@
                 </div>
                 Trang chủ
               </a>
-              <a class="nav-link" th:href="@{/cinema/dashboards}">
+              <a class="nav-link" th:href="@{/cinema/statistic}">
                 <div class="sb-nav-link-icon">
                   <i class="fas fa-chart-area"></i>
                 </div>
@@ -119,58 +119,11 @@
               <div class="col-xl-6">
                 <label for="name">Tên phim</label>
                 <div id="name" class="card mt-2">
-                  <div class="card-body"><label th:text="${phim.tenPhim}"/></div>
-                </div>
-              </div>
-              <div class="col-xl-6">
-                <label for="date-of-birth">Ngày phát hành</label>
-                <div id="date-of-birth" class="card mt-2">
-                  <div class="card-body">15/07/2000</div>
+     			 <div class="card-body"><label th:text="${phimDTO.tenPhim}"/>
                 </div>
               </div>
             </div>
-            <!--<div class="row mb-4">
-              <div class="col-xl-6">
-                <label for="msv">Mã sinh viên</label>
-                <div id="msv" class="card mt-2">
-                  <div class="card-body">B18DCCN047</div>
-                </div>
-              </div>
-              <div class="col-xl-6">
-                <label for="class">Lớp</label>
-                <div id="class" class="card mt-2">
-                  <div class="card-body">D18HTTT2</div>
-                </div>
-              </div>
-            </div>
-            <div class="row mb-4">
-              <div class="col-xl-6">
-                <label for="date-of-birth">Khoá</label>
-                <div id="date-of-birth" class="card mt-2">
-                  <div class="card-body">2018 - 2023</div>
-                </div>
-              </div>
-              <div class="col-xl-6">
-                <label for="name">Quê quán</label>
-                <div id="name" class="card mt-2">
-                  <div class="card-body">Kiến An, Hải Phòng</div>
-                </div>
-              </div>
-            </div>
-            <div class="row mb-4">
-              <div class="col-xl-6">
-                <label for="date-of-birth">Số điện thoại</label>
-                <div id="date-of-birth" class="card mt-2">
-                  <div class="card-body">0123456789</div>
-                </div>
-              </div>
-              <div class="col-xl-6">
-                <label for="name">Kí túc xá</label>
-                <div id="name" class="card mt-2">
-                  <div class="card-body">P402, B5</div>
-                </div>
-              </div>
-            </div>-->
+           
             <div class="card mb-4">
               <div class="card-header">
                 <i class="fas fa-table me-1"></i>
@@ -180,42 +133,31 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th>STT</th>
+                      <th>ID</th>
                       <th>Suất chiếu</th>
                       <th>Số lượng vé bán ra</th>
-                      <th>Tổng tiền thu được</th>
+                      <th>Tổng tiền thu được(VNĐ)</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>BAS1141</td>
-                      <td>Tiếng anh A11</td>
-                      <td>3</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>BAS1203</td>
-                      <td>Giải tích 1</td>
-                      <td>3</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>BAS1106</td>
-                      <td>Giáo dục thể chất</td>
-                      <td>3</td>
-                    </tr>
-                  </tbody>
+						<tr th:each="suatchieu : ${suatchieus}">
+							<td th:text="${suatchieu.id}"></td>
+							<td th:text="${suatchieu.mThoiGianChieu}"></td>
+							<td th:text="${suatchieu.soLuongVeBan}"></td>
+							<td th:text="${suatchieu.tongTienThu}"></td>
+							<!--<td><a th:href="@{/cinema/dashboards/{id}(id=${phim.id})}" class="btn btn-primary"><i class="fas fa-info"></i></a></td>-->
+						</tr>
+					</tbody>
                 </table>
               </div>
               <div class="card-body">
                 <div class="d-flex align-items-center">
                   <h6 class="col-3">Tổng số vé bán được:</h6>
-                  <h6>3.12</h6>
+                  <h6 th:text="${phimDTO.tongVeBanRa}"></h6 >
                 </div>
                 <div class="d-flex align-items-center">
-                  <h6 class="col-3">Tổng doanh thu:</h6>
-                  <h6>9</h6>
+                  <h6 class="col-3">Tổng doanh thu(VNĐ):</h6>
+                  <h6 th:text="${phimDTO.tongDoanhThuVND}"></h6 >
                 </div>
               </div>
             </div>

@@ -21,5 +21,35 @@ public class Phim {
 	public Phim() {
 		super();
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getTenPhim() {
+		return tenPhim;
+	}
+	public void setTenPhim(String tenPhim) {
+		this.tenPhim = tenPhim;
+	}
+	public String getLoaiPhim() {
+		return loaiPhim;
+	}
+	public void setLoaiPhim(String loaiPhim) {
+		this.loaiPhim = loaiPhim;
+	}
+	public Date getNamSanXuat() {
+		return namSanXuat;
+	}
+	public void setNamSanXuat(Date namSanXuat) {
+		this.namSanXuat = namSanXuat;
+	}
+	public String getMoTa() {
+		return moTa;
+	}
+	public void setMoTa(String moTa) {
+		this.moTa = moTa;
+	}
 	
 }

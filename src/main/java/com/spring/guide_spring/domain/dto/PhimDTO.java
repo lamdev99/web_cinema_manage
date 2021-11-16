@@ -1,17 +1,45 @@
 package com.spring.guide_spring.domain.dto;
 
+import java.text.DecimalFormat;
+
 public class PhimDTO implements Comparable<PhimDTO>{
 	private int id;
 	private String tenPhim;
 	private int tongVeBanRa;
 	private int tongDoanhThu;
+	private String tongDoanhThuVND;
 	
+	
+	
+	public PhimDTO(String tenPhim, int tongVeBanRa, int tongDoanhThu) {
+		super();
+		this.tenPhim = tenPhim;
+		this.tongVeBanRa = tongVeBanRa;
+		this.tongDoanhThu = tongDoanhThu;
+		DecimalFormat formatter = new DecimalFormat("###,###,###");
+		tongDoanhThuVND = formatter.format(tongDoanhThu);
+	}
+
+	public PhimDTO() {
+		super();
+	}
+
 	public PhimDTO(int id, String tenPhim, int tongVeBanRa, int tongDoanhThu) {
 		super();
 		this.id = id;
 		this.tenPhim = tenPhim;
 		this.tongVeBanRa = tongVeBanRa;
 		this.tongDoanhThu = tongDoanhThu;
+		DecimalFormat formatter = new DecimalFormat("###,###,###");
+		tongDoanhThuVND = formatter.format(tongDoanhThu);
+	}
+	
+	public String getTongDoanhThuVND() {
+		return tongDoanhThuVND;
+	}
+
+	public void setTongDoanhThuVND(String tongDoanhThuVND) {
+		this.tongDoanhThuVND = tongDoanhThuVND;
 	}
 
 	public int getId() {
