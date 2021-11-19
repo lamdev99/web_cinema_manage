@@ -1,6 +1,7 @@
 package com.spring.guide_spring.controller;
 
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -45,6 +46,10 @@ public class CinemaController {
 	
 	public CinemaController() {
 		super();
+		//default date time
+		setDefaultData();
+	}
+	private void setDefaultData() {
 		String timeTestStart = "1997-01-01 00:00:00";
 		String timeTestEnd = "2030-12-31 00:00:00";
 		try {
@@ -90,7 +95,7 @@ public class CinemaController {
 
 	@GetMapping("login")
 	public String showLogin(Nguoidung nguoidung) {
-		return "login";
+		return "gdDangNhap";
 	}
 
 	@PostMapping("login")
@@ -118,19 +123,40 @@ public class CinemaController {
 		if (start == null && end == null) {
 			List<PhimDTO> list = phimDAO.getAllPhim();
 			model.addAttribute("phims", list);
+			int tongVeBanRa = 0,tongDoanhThu = 0;
+			for(PhimDTO phim : list) {
+				tongVeBanRa += phim.getTongVeBanRa();
+				tongDoanhThu+=phim.getTongDoanhThu();
+			}
+			model.addAttribute("phims", list);
+			model.addAttribute("tongVeBanRa",tongVeBanRa);
+			DecimalFormat formatter = new DecimalFormat("###,###,###");
+			String tongDoanhThuVND = formatter.format(tongDoanhThu);
+			model.addAttribute("tongDoanhThuVND",tongDoanhThuVND);
+			setDefaultData();
 			return "gdTKDTTheoPhim";
 		}
+		System.out.print("123456");
 		this.start = start;
 		this.end = end;
 		List<PhimDTO> list = phimDAO.getTKDTTheoPhim(start, end);
-		model.addAttribute("phims", list);
-		try {
-			model.addAttribute("start",new SimpleDateFormat("dd/MM/yyyy").parse("22/10/2021"));
-			model.addAttribute("end",new SimpleDateFormat("dd/MM/yyyy").parse("22/10/2021"));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		int tongVeBanRa = 0,tongDoanhThu = 0;
+		for(PhimDTO phim : list) {
+			tongVeBanRa += phim.getTongVeBanRa();
+			tongDoanhThu+=phim.getTongDoanhThu();
 		}
+		model.addAttribute("phims", list);
+		model.addAttribute("tongVeBanRa",tongVeBanRa);
+		DecimalFormat formatter = new DecimalFormat("###,###,###");
+		String tongDoanhThuVND = formatter.format(tongDoanhThu);
+		model.addAttribute("tongDoanhThuVND",tongDoanhThuVND);
+//		try {
+//			model.addAttribute("start",new SimpleDateFormat("dd/MM/yyyy").parse("22/10/2021"));
+//			model.addAttribute("end",new SimpleDateFormat("dd/MM/yyyy").parse("22/10/2021"));
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		return "gdTKDTTheoPhim";
 	}

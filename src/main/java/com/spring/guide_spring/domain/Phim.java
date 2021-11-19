@@ -1,5 +1,6 @@
 package com.spring.guide_spring.domain;
 
+import java.beans.Transient;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ public class Phim {
 	private String loaiPhim;
 	private Date namSanXuat;
 	private String moTa;
+//	@Transient
 	public Phim() {
 		super();
 	}
