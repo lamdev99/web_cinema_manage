@@ -79,27 +79,27 @@
 								<table class="table">
 									<thead>
 										<tr>
-											<th>ID</th>
-											<th>Suất chiếu</th>
-											<th>Số lượng vé bán ra</th>
-											<th>Tổng tiền thu được(VNĐ)</th>
+											<th class="text-center">ID</th >
+											<th class="text-center">Suất chiếu</th >
+											<th class="text-center">Số lượng vé bán ra</th >
+											<th class="text-center">Tổng tiền thu được(VNĐ)</th >
 										</tr>
 									</thead>
 									<tbody>
 										<tr th:each="suatchieu : ${suatchieus}">
-											<td th:text="${suatchieu.id}"></td>
-											<td th:text="${suatchieu.mThoiGianChieu}"></td>
-											<td th:text="${suatchieu.soLuongVeBan}"></td>
+											<td th:text="${suatchieu.id}" class="text-center"></td>
+											<td th:text="${suatchieu.mThoiGianChieu}" class="text-center"></td>
+											<td th:text="${suatchieu.soLuongVeBan}" class="text-center"></td>
 											<td th:text="${suatchieu.tongTienThu}"></td>
 											<!--<td><a th:href="@{/cinema/dashboards/{id}(id=${phim.id})}" class="btn btn-primary"><i class="fas fa-info"></i></a></td>-->
 										</tr>
 										<tr>
 											<td>
-												<h6 th:text="Tổng"></h6>
+												<h6 th:text="Tổng" class="text-center"></h6>
 											</td>
 											<td></td>
 											<td>
-												<h6 th:text="${phimDTO.tongVeBanRa}"></h6>
+												<h6 th:text="${phimDTO.tongVeBanRa}" class="text-center"></h6>
 											</td>
 											<td>
 												<h6 th:text="${phimDTO.tongDoanhThuVND}"></h6>

@@ -31,5 +31,14 @@ public class Hoadon {
 	public Hoadon() {
 		super();
 	}
+	public Hoadon(int id, int tongTien, int tienPhat, int diemCong, Date ngayMua, String maSoThue) {
+		super();
+		this.id = id;
+		this.tongTien = tongTien;
+		this.tienPhat = tienPhat;
+		this.diemCong = diemCong;
+		this.ngayMua = ngayMua;
+		this.maSoThue = maSoThue;
+	}
 	
 }

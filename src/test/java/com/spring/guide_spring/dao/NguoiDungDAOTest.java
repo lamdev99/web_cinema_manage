@@ -13,15 +13,15 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.guide_spring.domain.Nguoidung;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@Transactional
 public class NguoiDungDAOTest {
-
 	@TestConfiguration
     static class EmployeeServiceImplTestContextConfiguration {
  
@@ -61,18 +61,6 @@ public class NguoiDungDAOTest {
 	@Test
 	public void testDangNhapKhongThanhCong() {
 		Nguoidung nguoidung = new Nguoidung("admin1","YWRtaW4y");
-		
-		Nguoidung nguoidungFound = nguoiDungDAO.checkLogin(nguoidung.getTenDangNhap(), nguoidung.getMatKhau());
-		assertEquals(nguoidungFound,null);
-	}
-
-	/**
-	 * Ten dang nhap: ton tai
-	 * Mat khau: sai
-	 */
-	@Test
-	public void testDangNhapKhongThanhCong1() {
-		Nguoidung nguoidung = new Nguoidung("admin1","123");
 		
 		Nguoidung nguoidungFound = nguoiDungDAO.checkLogin(nguoidung.getTenDangNhap(), nguoidung.getMatKhau());
 		assertEquals(nguoidungFound,null);

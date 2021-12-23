@@ -136,7 +136,6 @@ public class CinemaController {
 			setDefaultData();
 			return "gdTKDTTheoPhim";
 		}
-		System.out.print("123456");
 		this.start = start;
 		this.end = end;
 		List<PhimDTO> list = phimDAO.getTKDTTheoPhim(start, end);
@@ -150,14 +149,6 @@ public class CinemaController {
 		DecimalFormat formatter = new DecimalFormat("###,###,###");
 		String tongDoanhThuVND = formatter.format(tongDoanhThu);
 		model.addAttribute("tongDoanhThuVND",tongDoanhThuVND);
-//		try {
-//			model.addAttribute("start",new SimpleDateFormat("dd/MM/yyyy").parse("22/10/2021"));
-//			model.addAttribute("end",new SimpleDateFormat("dd/MM/yyyy").parse("22/10/2021"));
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
 		return "gdTKDTTheoPhim";
 	}
 	
